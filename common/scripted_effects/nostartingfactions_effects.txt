@@ -64,4 +64,27 @@ nostartingfactions_cleanup = {
 			if = { limit = { ROM = { is_guaranteed_by = FRA } } diplomatic_relation = { country = ROM relation = guarantee active = no } }
 			if = { limit = { YUG = { is_guaranteed_by = FRA } } diplomatic_relation = { country = YUG relation = guarantee active = no } }
 		}
+		
+		# Remove additional guarantees
+		ENG = {
+			if = { limit = { BEL = { is_guaranteed_by = ENG } } diplomatic_relation = { country = BEL relation = guarantee active = no } }
+			if = { limit = { HOL = { is_guaranteed_by = ENG } } diplomatic_relation = { country = HOL relation = guarantee active = no } }
+			if = { limit = { POL = { is_guaranteed_by = ENG } } diplomatic_relation = { country = POL relation = guarantee active = no } }
+			if = { limit = { GRE = { is_guaranteed_by = ENG } } diplomatic_relation = { country = GRE relation = guarantee active = no } }
+			if = { limit = { TUR = { is_guaranteed_by = ENG } } diplomatic_relation = { country = TUR relation = guarantee active = no } }
+		}
+		
+		BEL = {
+			if = { limit = { ENG = { is_guaranteed_by = BEL } } diplomatic_relation = { country = ENG relation = guarantee active = no } }
+		}
+		
+		# Remove all remaining guarantees globally
+		every_country = {
+			every_other_country = {
+				limit = { is_guaranteed_by = PREV }
+				PREV = {
+					diplomatic_relation = { country = PREV relation = guarantee active = no }
+				}
+			}
+		}
 	}
