@@ -87,4 +87,39 @@ nostartingfactions_cleanup = {
 				}
 			}
 		}
+		
+		# Remove all puppets/subjects for true FFA experience
+		# British Empire
+		if = { limit = { RAJ = { is_subject_of = ENG } } ENG = { end_puppet = RAJ } }
+		if = { limit = { CAN = { is_subject_of = ENG } } ENG = { end_puppet = CAN } }
+		if = { limit = { AST = { is_subject_of = ENG } } ENG = { end_puppet = AST } }
+		if = { limit = { SAF = { is_subject_of = ENG } } ENG = { end_puppet = SAF } }
+		if = { limit = { NZL = { is_subject_of = ENG } } ENG = { end_puppet = NZL } }
+		if = { limit = { MAL = { is_subject_of = ENG } } ENG = { end_puppet = MAL } }
+		if = { limit = { KUW = { is_subject_of = ENG } } ENG = { end_puppet = KUW } }
+		if = { limit = { BRM = { is_subject_of = ENG } } ENG = { end_puppet = BRM } }
+		if = { limit = { PAL = { is_subject_of = ENG } } ENG = { end_puppet = PAL } }
+		if = { limit = { TRA = { is_subject_of = ENG } } ENG = { end_puppet = TRA } }
+		if = { limit = { OMA = { is_subject_of = ENG } } ENG = { end_puppet = OMA } }
+		
+		# USA
+		if = { limit = { PHI = { is_subject_of = USA } } USA = { end_puppet = PHI } }
+		
+		# Japanese Empire
+		if = { limit = { MAN = { is_subject_of = JAP } } JAP = { end_puppet = MAN } }
+		if = { limit = { MEN = { is_subject_of = JAP } } JAP = { end_puppet = MEN } }
+		
+		# French Empire
+		if = { limit = { VIN = { is_subject_of = FRA } } FRA = { end_puppet = VIN } }
+		
+		# Dutch Empire
+		if = { limit = { INS = { is_subject_of = HOL } } HOL = { end_puppet = INS } }
+		
+		# Global cleanup for any remaining subjects (including colonies)
+		every_country = {
+			limit = { is_subject = yes }
+			overlord = {
+				end_puppet = PREV
+			}
+		}
 	}

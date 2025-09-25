@@ -11,4 +11,20 @@ on_actions = {
 			}
 		}
 	}
+	
+	on_daily = {
+		effect = {
+			if = {
+				limit = { 
+					NOT = { has_global_flag = nostartingfactions_puppet_cleanup }
+					date < 1936.1.3
+				}
+				set_global_flag = nostartingfactions_puppet_cleanup
+				random_country = {
+					limit = { original_tag = GER }
+					nostartingfactions_cleanup = yes
+				}
+			}
+		}
+	}
 }
