@@ -1,107 +1,12 @@
 on_actions = {
-	on_game_start = {
+	on_startup = {
 		effect = {
 			if = {
 				limit = { NOT = { has_global_flag = nostartingfactions_initialized } }
 				set_global_flag = nostartingfactions_initialized
-
-				# Remove starting factions (Allies, Axis, Comintern)
-				if = {
-					limit = { ENG = { is_in_faction = yes } }
-					if = { limit = { ENG = { is_faction_leader = yes } } ENG = { dismantle_faction = yes } }
-					every_country = {
-						limit = { is_in_faction_with = ENG }
-						leave_faction = yes
-					}
-					ENG = { leave_faction = yes }
-				}
-
-				if = {
-					limit = { GER = { is_in_faction = yes } }
-					if = { limit = { GER = { is_faction_leader = yes } } GER = { dismantle_faction = yes } }
-					every_country = {
-						limit = { is_in_faction_with = GER }
-						leave_faction = yes
-					}
-					GER = { leave_faction = yes }
-				}
-
-				if = {
-					limit = { SOV = { is_in_faction = yes } }
-					if = { limit = { SOV = { is_faction_leader = yes } } SOV = { dismantle_faction = yes } }
-					every_country = {
-						limit = { is_in_faction_with = SOV }
-						leave_faction = yes
-					}
-					SOV = { leave_faction = yes }
-				}
-
-				# Remove specified guarantees
-				USA = {
-					if = { limit = { ARG = { is_guaranteed_by = USA } } diplomatic_relation = { country = ARG relation = guarantee active = no } }
-					if = { limit = { BOL = { is_guaranteed_by = USA } } diplomatic_relation = { country = BOL relation = guarantee active = no } }
-					if = { limit = { BRA = { is_guaranteed_by = USA } } diplomatic_relation = { country = BRA relation = guarantee active = no } }
-					if = { limit = { CHL = { is_guaranteed_by = USA } } diplomatic_relation = { country = CHL relation = guarantee active = no } }
-					if = { limit = { COL = { is_guaranteed_by = USA } } diplomatic_relation = { country = COL relation = guarantee active = no } }
-					if = { limit = { COS = { is_guaranteed_by = USA } } diplomatic_relation = { country = COS relation = guarantee active = no } }
-					if = { limit = { CUB = { is_guaranteed_by = USA } } diplomatic_relation = { country = CUB relation = guarantee active = no } }
-					if = { limit = { DOM = { is_guaranteed_by = USA } } diplomatic_relation = { country = DOM relation = guarantee active = no } }
-					if = { limit = { ECU = { is_guaranteed_by = USA } } diplomatic_relation = { country = ECU relation = guarantee active = no } }
-					if = { limit = { ELS = { is_guaranteed_by = USA } } diplomatic_relation = { country = ELS relation = guarantee active = no } }
-					if = { limit = { GUA = { is_guaranteed_by = USA } } diplomatic_relation = { country = GUA relation = guarantee active = no } }
-					if = { limit = { HAI = { is_guaranteed_by = USA } } diplomatic_relation = { country = HAI relation = guarantee active = no } }
-					if = { limit = { HON = { is_guaranteed_by = USA } } diplomatic_relation = { country = HON relation = guarantee active = no } }
-					if = { limit = { MEX = { is_guaranteed_by = USA } } diplomatic_relation = { country = MEX relation = guarantee active = no } }
-					if = { limit = { NIC = { is_guaranteed_by = USA } } diplomatic_relation = { country = NIC relation = guarantee active = no } }
-					if = { limit = { PAN = { is_guaranteed_by = USA } } diplomatic_relation = { country = PAN relation = guarantee active = no } }
-					if = { limit = { PAR = { is_guaranteed_by = USA } } diplomatic_relation = { country = PAR relation = guarantee active = no } }
-					if = { limit = { PRU = { is_guaranteed_by = USA } } diplomatic_relation = { country = PRU relation = guarantee active = no } }
-					if = { limit = { URG = { is_guaranteed_by = USA } } diplomatic_relation = { country = URG relation = guarantee active = no } }
-					if = { limit = { VEN = { is_guaranteed_by = USA } } diplomatic_relation = { country = VEN relation = guarantee active = no } }
-				}
-
-				CZE = {
-					if = {
-						limit = { ROM = { is_guaranteed_by = CZE } }
-						diplomatic_relation = { country = ROM relation = guarantee active = no }
-					}
-					if = {
-						limit = { YUG = { is_guaranteed_by = CZE } }
-						diplomatic_relation = { country = YUG relation = guarantee active = no }
-					}
-				}
-
-				ROM = {
-					if = {
-						limit = { CZE = { is_guaranteed_by = ROM } }
-						diplomatic_relation = { country = CZE relation = guarantee active = no }
-					}
-					if = {
-						limit = { TUR = { is_guaranteed_by = ROM } }
-						diplomatic_relation = { country = TUR relation = guarantee active = no }
-					}
-				}
-
-				ITA = {
-					if = {
-						limit = { ALB = { is_guaranteed_by = ITA } }
-						diplomatic_relation = { country = ALB relation = guarantee active = no }
-					}
-				}
-
-				FRA = {
-					if = {
-						limit = { CZE = { is_guaranteed_by = FRA } }
-						diplomatic_relation = { country = CZE relation = guarantee active = no }
-					}
-					if = {
-						limit = { ROM = { is_guaranteed_by = FRA } }
-						diplomatic_relation = { country = ROM relation = guarantee active = no }
-					}
-					if = {
-						limit = { YUG = { is_guaranteed_by = FRA } }
-						diplomatic_relation = { country = YUG relation = guarantee active = no }
-					}
+				random_country = {
+					limit = { original_tag = GER }
+					nostartingfactions_cleanup = yes
 				}
 			}
 		}
